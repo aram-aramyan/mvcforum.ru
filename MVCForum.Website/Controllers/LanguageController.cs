@@ -35,6 +35,10 @@ namespace MVCForum.Website.Controllers
         [ChildActionOnly]
         public ActionResult Index()
         {
+            if (!SiteConstants.Instance.AllowLanguageSelector)
+            {
+                return Content(string.Empty);
+            }
             var viewModel = new LanguageListAllViewModel
             {
                 Alllanguages = LocalizationService.AllLanguages,

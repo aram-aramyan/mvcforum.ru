@@ -156,5 +156,8 @@ namespace MVCForum.Domain.Constants
 
         // Default Storage Type
         public string StorageProviderType => GetType("StorageProviderType");
+
+        //Language Selector
+        public bool AllowLanguageSelector => GetConfig("AllowLanguageSelector") == "true";
     }
 }

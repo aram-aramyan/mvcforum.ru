@@ -141,6 +141,10 @@
     <Compile Include="Data\Mapping\TopicTagMapping.cs" />
     <Compile Include="Data\Mapping\UploadedFileMapping.cs" />
     <Compile Include="Data\Mapping\VoteMapping.cs" />
+    <Compile Include="Migrations\201603182315027_Initial.cs" />
+    <Compile Include="Migrations\201603182315027_Initial.Designer.cs">
+      <DependentUpon>201603182315027_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Data\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Data\UnitOfWork\UnitOfWorkManager.cs" />
@@ -188,6 +192,11 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603182315027_Initial.resx">
+      <DependentUpon>201603182315027_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

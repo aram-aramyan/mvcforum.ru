@@ -219,6 +219,51 @@ namespace MVCForum.Website.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult GenerateRuFromEn()
+        {
+            var fileEn = System.IO.File.ReadLines(Request.MapPath("~/Installer/en-GB.csv")).Select(GetKeyValue).ToList();
+            var fileRu = System.IO.File.ReadLines(Request.MapPath("~/Installer/ru-RU.csv")).Select(GetKeyValue).ToList();
+
+            var result = new List<string>();
+
+            foreach (var line in fileEn)
+            {
+                var key = line[0];
+                var value = line[1];
+
+                var lineRu = fileRu.FirstOrDefault(l => l[0] == key);
+                if (lineRu != null && lineRu.Length > 1)
+                {
+                    value = lineRu[1];
+                }
+
+                result.Add($"{key},{value}");
+            }
+            System.IO.File.WriteAllLines(Request.MapPath("~/Installer/ru-RU.csv"), result.ToArray(), System.Text.Encoding.UTF8);
+
+            return Content(string.Empty);
+        }
+
+        private static string[] GetKeyValue(string line)
+        {
+            var result = new[] { "", "" };
+
+            if (string.IsNullOrEmpty(line))
+                return result;
+
+            var firstIndex = line.IndexOf(",", StringComparison.Ordinal);
+            if (firstIndex == -1)
+            {
+                result[0] = line;
+                return result;
+            }
+
+            result[0] = line.Substring(0, firstIndex);
+            result[1] = line.Substring(firstIndex + 1);
+
+            return result;
+        }
+
         public ActionResult Languages()
         {
             using (UnitOfWorkManager.NewUnitOfWork())

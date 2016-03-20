@@ -30,7 +30,7 @@ namespace MVCForum.Services.Migrations
             //var isFirstInstall = false;
 
             // Add the language - If it's not already there
-            const string langCulture = "en-GB";
+            const string langCulture = "ru-RU";
             var language = context.Language.FirstOrDefault(x => x.LanguageCulture == langCulture);
             if (language == null)
             {
@@ -48,7 +48,7 @@ namespace MVCForum.Services.Migrations
                 context.SaveChanges();
 
                 // Now add the default language strings
-                var file = HostingEnvironment.MapPath(@"~/Installer/en-GB.csv");
+                var file = HostingEnvironment.MapPath(@"~/Installer/ru-RU.csv");
                 var commaSeparator = new[] {','};
                 if (file != null)
                 {
@@ -159,7 +159,7 @@ namespace MVCForum.Services.Migrations
                 if (!context.Category.Any())
                 {
                     // Doesn't exist so add the example category
-                    const string exampleCatName = "Example Category";
+                    const string exampleCatName = "Тестовая категория";
                     var exampleCat = new Category
                     {
                         Name = exampleCatName,
@@ -371,15 +371,16 @@ namespace MVCForum.Services.Migrations
                     context.Topic.Add(topic);
                     context.SaveChanges();
 
-                    const string readMeText = @"<h2>Administration</h2>
-<p>We have auto created an admin user for you to manage the site</p>
-<p>Username: <strong>admin</strong><br />Password: <strong>password</strong></p>
-<p>Once you have logged in, you can manage the forum <a href=""/admin/"">through the admin section</a>. </p>
-<p><strong><font color=""#ff0000"">Important:</font> </strong>Please update the admin password (and username) before putting this site live.</p>
-<h2>Documentation</h2>
-<p>We have documentation on Github in the WIKI</p>
+                    const string readMeText = @"<h2>Администрация</h2>
+<p>Автоматически создана учетная запись администратора сайта</p>
+<p>Логин: <strong>admin</strong><br />Пароль: <strong>password</strong></p>
+<p>После входа в систему Вы можете настроить сайт в <a href=""/admin/"">панели управления</a>. </p>
+<p><strong><font color=""#ff0000"">ВАЖНО:</font> </strong>Обязательно поменяйте пароль (и логин) администратора перед публикацией на живой сервер.</p>
+<h2>Документация</h2>
+<p>Документация на английском доступна на Github в разделе WIKI</p>
 <p><a href=""https://github.com/YodasMyDad/mvcforum/wiki"">https://github.com/YodasMyDad/mvcforum/wiki</a></p>
-<p>You can also grab the source code from Github too.</p>";
+<p>Исходный код проекта также доступен на Github.</p>
+<p>Документация на русском языке вскоре будет доступна на сайте <a href=""https://mvcforum.ru/"">https://mvcforum.ru/</a></p>";
 
                     var post = new Post
                     {
