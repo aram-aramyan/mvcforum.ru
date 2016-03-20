@@ -1061,6 +1061,7 @@
     <Content Include="Areas\Admin\Views\Account\ManageUserPoints.cshtml" />
     <Content Include="Themes\Metro\Content\Styles\Theme.css.map" />
     <Content Include="Installer\ru-RU.csv" />
+    <None Include="Properties\PublishProfiles\1.pubxml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
