@@ -356,7 +356,7 @@ namespace MVCForum.Services.Migrations
                     context.SaveChanges();
 
                     // Now add read me
-                    const string name = "Read Me";
+                    const string name = "ВАЖНО: Прочитай меня!";
                     var category = context.Category.FirstOrDefault();
                     var topic = new Topic
                     {
@@ -380,7 +380,7 @@ namespace MVCForum.Services.Migrations
 <p>Документация на английском доступна на Github в разделе WIKI</p>
 <p><a href=""https://github.com/YodasMyDad/mvcforum/wiki"">https://github.com/YodasMyDad/mvcforum/wiki</a></p>
 <p>Исходный код проекта также доступен на Github.</p>
-<p>Документация на русском языке вскоре будет доступна на сайте <a href=""https://mvcforum.ru/"">https://mvcforum.ru/</a></p>";
+<p>Документация на русском языке вскоре будет доступна на сайте <a href=""http://mvcforum.ru/"">https://mvcforum.ru/</a></p>";
 
                     var post = new Post
                     {
