@@ -1277,7 +1277,6 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\SideSearch.cshtml" />
     <Content Include="Views\Shared\_CreateNewPost.cshtml" />
-    <Content Include="Views\Shared\_DocumentationBlock.cshtml" />
     <Content Include="Views\Shared\_EmailConfirmationNotice.cshtml" />
     <Content Include="Views\Shared\_LanguagePartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
