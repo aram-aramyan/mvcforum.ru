@@ -1,13 +1,23 @@
-﻿@using System.Globalization
-@using MVCForum.Utilities
-@model MVCForum.Website.ViewModels.ViewMemberViewModel
+﻿@model MVCForum.Website.ViewModels.ViewMemberViewModel
 @{
     Layout = "~/Views/Shared/_LayoutRightSideBar.cshtml";
     ViewBag.Title = string.Concat(Model.User.UserName, " ",Html.LanguageString("Members.ProfileTitle"));
 }
+@helper DrawField(string field, string value, bool condition = true, string delimitor = " ")
+{
+    if (condition)
+    {
+       @Html.Raw(string.Format("{0}{1}{2}", Html.LanguageString(field), delimitor, value))
+    }
+}
 
 @section Header
 {
+    @if (!Model.User.IsApproved || Model.User.IsBanned || Model.User.IsLockedOut)
+    {
+        <meta name="robots" content="noindex" />
+    }
+
     <script type="text/javascript">
         $(function () {
             $.post(app_base + "Members/GetMemberDiscussions",
@@ -82,20 +92,17 @@
                         <h3>@Model.User.UserName</h3>
                     </div>
                     <div class="col-md-6">
-                        <p>@Html.LanguageString("Members.Profile.Joined") @DatesUI.GetPrettyDate(Model.User.CreateDate.ToString())</p>
-                        @if (Model.User.LastActivityDate != null)
-                        {
-                            <p>@(Html.LanguageString("Members.Profile.LastOnline")): @DatesUI.GetPrettyDate(Model.User.LastActivityDate.ToString())</p>
-                        }                        
-                        <p>@Html.LanguageString("Members.Profile.Posts") @Model.User.Posts.Count</p>
-                        <p>@Html.LanguageString("Members.Profile.Points") @Model.User.TotalPoints</p>
-                        <p>@Html.LanguageString("Members.Profile.Age") @Html.Raw(Model.User.Age > 0 ? Model.User.Age.ToString() : "")</p>  
+                        <p>@DrawField("Members.Profile.Joined", DatesUI.GetPrettyDate(Model.User.CreateDate.ToString()))</p>
+                        <p>@DrawField("Members.Profile.LastOnline", DatesUI.GetPrettyDate(Model.User.LastActivityDate.ToString()), Model.User.LastActivityDate != null, ": ")</p>
+                        <p>@DrawField("Members.Profile.Posts", Model.User.Posts.Count.ToString())</p>
+                        <p>@DrawField("Members.Profile.Points", Model.User.TotalPoints.ToString())</p>
+                        <p>@DrawField("Members.Profile.Age", Model.User.Age.ToString(), Model.User.Age > 0)</p>  
                     </div>
                     <div class="col-md-6">
-                        <p>@Html.LanguageString("Members.Profile.Location") @Html.Raw(string.IsNullOrEmpty(Model.User.Location) ? "" : Model.User.Location)</p>
-                        <p>@Html.LanguageString("Members.Profile.Website") @Html.Raw(string.IsNullOrEmpty(Model.User.Website) ? "" : string.Format("<a href='{0}' rel='nofollow'>{0}</a>", Model.User.Website))</p>
-                        <p>@Html.LanguageString("Members.Profile.Twitter") @Html.Raw(string.IsNullOrEmpty(Model.User.Twitter) ? "" : string.Format("<a href='{0}' rel='nofollow'>{0}</a>", Model.User.Twitter))</p>
-                        <p>@Html.LanguageString("Members.Profile.Facebook") @Html.Raw(string.IsNullOrEmpty(Model.User.Facebook) ? "" : string.Format("<a href='{0}' rel='nofollow'>{0}</a>", Model.User.Facebook))</p>  
+                        <p>@DrawField("Members.Profile.Location", Model.User.Location, !string.IsNullOrWhiteSpace(Model.User.Location))</p>
+                        <p>@DrawField("Members.Profile.Website", string.Format("<a href='{0}' rel='nofollow'>{0}</a>", Model.User.Website), !string.IsNullOrWhiteSpace(Model.User.Website))</p>
+                        <p>@DrawField("Members.Profile.Twitter", string.Format("<a href='{0}' rel='nofollow'>{0}</a>", Model.User.Twitter), !string.IsNullOrWhiteSpace(Model.User.Twitter))</p>
+                        <p>@DrawField("Members.Profile.Facebook", string.Format("<a href='{0}' rel='nofollow'>{0}</a>", Model.User.Facebook), !string.IsNullOrWhiteSpace(Model.User.Facebook))</p>
                     </div>
                 </div>
             </div>
