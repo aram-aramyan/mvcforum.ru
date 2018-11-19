@@ -1,5 +1,3 @@
-![MVCForum](http://support.mvcforum.com/installer/content/images/logo.png)
-
 MVCForum - Fully Featured ASP.NET MVC 5 Forum
 ========
 
@@ -34,38 +32,4 @@ Current Features Include
 - Batch tools
 - Plus loads more
 
-We are looking for feedback on improvements, bugs and new features so please give it a spin and let us know what you think. MVCForum is designed and developed by the [team at Aptitude](https://www.aptitude.co.uk)
 
-## Documentation ##
-
-Most documentation can be found in the Wiki
-
-[Wiki](https://github.com/leen3o/mvcforum/wiki)
-
-Our current support forum for bugs and questions (Which is also running on the latest MVCForum)
-
-[http://support.mvcforum.com](http://support.mvcforum.com)
-
-## Installing ##
-
-[Please see the Wiki page](https://github.com/leen3o/mvcforum/wiki/Installing)
-
-## Screenshots ##
-
-![Home Page Screenshot](http://www.mvcforum.com/img/screens/homepage.png)
-
-----------
-
-![Thread Screenshot](http://www.mvcforum.com/img/screens/thread.png)
-
-----------
-
-![Badges Screenshot](http://www.mvcforum.com/img/screens/badges.png)
-
-----------
-
-![TinyMCE Screenshot](http://www.mvcforum.com/img/screens/tinymce.png)
-
-----------
-
-![Activity Screenshot](http://www.mvcforum.com/img/screens/activity.png)
